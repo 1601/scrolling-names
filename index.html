@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Infinite Auto Scrolling Names</title>
+  <title>Infinite Auto Scrolling Names (One per Screen)</title>
   <style>
     /* Reset and basic styles */
     * {
@@ -16,115 +16,67 @@
       font-family: sans-serif;
       overflow: hidden;
     }
-    /* The fixed viewport container */
+    /* The fixed viewport container: one slide fills the screen */
     .container {
-      position: relative;
       width: 100%;
       height: 100vh;
       overflow: hidden;
+      position: relative;
+    }
+    /* The credits container holds all the slides and is animated */
+    .credits {
+      /* With 20 unique slides (plus one duplicate), we use steps(20)
+         so the transform jumps exactly 20 times in one cycle. */
+      animation: scroll 60s steps(20) infinite;
+    }
+    /* Each slide takes up the entire viewport and centers its content */
+    .slide {
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    /* This inner container will be animated */
-    .scroll {
-      /* Adjust the duration (here 20s) for faster/slower scrolling */
-      animation: scroll-up 60s linear infinite;
-    }
-    /* The credits list styling */
-    .credits {
-      max-width: 600px;
-     
-      text-align: center;
       font-size: 2rem;
+      text-align: center;
+      padding: 0 1rem;
     }
-    .credits div {
-        
-      margin: 6.6rem 0;
-    }
-    /* Optional: if you want to style any label inside each div,
-       you can use the <strong> tag or similar markup */
-    .credits div strong {
-      display: block;
-      font-size: 1.3rem;
-      font-weight: normal;
-      margin-bottom: 0.5rem;
-    }
-    /* Keyframes: translate upward by 50% of the .scroll’s total height.
-       Since we will duplicate the credits list, one full cycle equals one copy’s height. */
-    @keyframes scroll-up {
+    /* Animate the credits container upward by the height of 20 slides */
+    @keyframes scroll {
       0% {
         transform: translateY(0);
       }
       100% {
-        transform: translateY(-50%);
+        transform: translateY(-2000vh);
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- The .scroll div will contain two copies of the list -->
-    <div class="scroll">
-      <div class="credits" id="credits">
-        <div>Mr. Larry &amp; Mrs. Gemma Santos</div>
-        <div>Mrs Fely Garcia &amp; Family</div>
-        <div>Mr. Knoll &amp; Mrs. Emma Evangelista</div>
-        <div>Mr. Marcelo &amp; Mrs. Aileen Castillo</div>
-        <div>Mr. Darlo &amp; Dra. Glo Ilagan</div>
-        <div>Engr. Val &amp; Mrs. Eva Plata</div>
-        <div>Bro. Romeo &amp; Mrs. Josie Aguirre</div>
-        <div>Mr. Harold &amp; Mrs. Gina Nueva</div>
-        <div>Dr. Nicomedes Dimalibot</div>
-        <div>Mr. Gil &amp; Mrs. Perla Castillo</div>
-        <div>Mr. Christopher &amp; Mrs. Mitchi Castillo</div>
-        <div>Engr. Patrick Andree Castillo</div>
-        <div>Ms. Jelian Casapao</div>
-        <div>Steak ni Juan</div>
-        <div>Mr. Ajun &amp; Mrs. Blandine Rosales</div>
-        <div>Mr. Nemesio &amp; Mrs. Evelyn Reyes</div>
-        <div>Mr. Wilson &amp; Mrs. Jean Garcia</div>
-        <div>Mrs. Belen Macaraig</div>
-        <div>Dr. Maria Leida Garcia</div>
-        <div>Mr. Ramil &amp; Mrs. Maricel Ilagan</div>
-        <div>Dr. Jonathan Mangubat</div>
-        <!-- duplicate -->
-        <div>Mr. Larry &amp; Mrs. Gemma Santos</div>
-        <div>Mrs Fely Garcia &amp; Family</div>
-        <div>Mr. Knoll &amp; Mrs. Emma Evangelista</div>
-        <div>Mr. Marcelo &amp; Mrs. Aileen Castillo</div>
-        <div>Mr. Darlo &amp; Dra. Glo Ilagan</div>
-        <div>Engr. Val &amp; Mrs. Eva Plata</div>
-        <div>Bro. Romeo &amp; Mrs. Josie Aguirre</div>
-        <div>Mr. Harold &amp; Mrs. Gina Nueva</div>
-        <div>Dr. Nicomedes Dimalibot</div>
-        <div>Mr. Gil &amp; Mrs. Perla Castillo</div>
-        <div>Mr. Christopher &amp; Mrs. Mitchi Castillo</div>
-        <div>Engr. Patrick Andree Castillo</div>
-        <div>Ms. Jelian Casapao</div>
-        <div>Steak ni Juan</div>
-        <div>Mr. Ajun &amp; Mrs. Blandine Rosales</div>
-        <div>Mr. Nemesio &amp; Mrs. Evelyn Reyes</div>
-        <div>Mr. Wilson &amp; Mrs. Jean Garcia</div>
-        <div>Mrs. Belen Macaraig</div>
-        <div>Dr. Maria Leida Garcia</div>
-        <div>Mr. Ramil &amp; Mrs. Maricel Ilagan</div>
-        <div>Dr. Jonathan Mangubat</div>
-
-      </div>
-      <!-- The duplicate will be added automatically via JavaScript -->
+    <div class="credits">
+      <div class="slide">Mr. Larry &amp; Mrs. Gemma Santos</div>
+      <div class="slide">Mrs Fely Garcia &amp; Family</div>
+      <div class="slide">Mr. Knoll &amp; Mrs. Emma Evangelista</div>
+      <div class="slide">Mr. Marcelo &amp; Mrs. Aileen Castillo</div>
+      <div class="slide">Mr. Darlo &amp; Dra. Glo Ilagan</div>
+      <div class="slide">Engr. Val &amp; Mrs. Eva Plata</div>
+      <div class="slide">Bro. Romeo &amp; Mrs. Josie Aguirre</div>
+      <div class="slide">Mr. Harold &amp; Mrs. Gina Nueva</div>
+      <div class="slide">Dr. Nicomedes Dimalibot</div>
+      <div class="slide">Mr. Gil &amp; Mrs. Perla Castillo</div>
+      <div class="slide">Mr. Christopher &amp; Mrs. Mitchi Castillo</div>
+      <div class="slide">Engr. Patrick Andree Castillo</div>
+      <div class="slide">Ms. Jelian Casapao</div>
+      <div class="slide">Steak ni Juan</div>
+      <div class="slide">Mr. Ajun &amp; Mrs. Blandine Rosales</div>
+      <div class="slide">Mr. Nemesio &amp; Mrs. Evelyn Reyes</div>
+      <div class="slide">Mr. Wilson &amp; Mrs. Jean Garcia</div>
+      <div class="slide">Mrs. Belen Macaraig</div>
+      <div class="slide">Dr. Maria Leida Garcia</div>
+      <div class="slide">Mr. Ramil &amp; Mrs. Maricel Ilagan</div>
+      <div class="slide">Dr. Jonathan Mangubat</div>
+      <!-- Duplicate the first slide for a seamless loop -->
+      <div class="slide">Mr. Larry &amp; Mrs. Gemma Santos</div>
     </div>
   </div>
-
-  <script>
-    // When the DOM is ready, duplicate the credits list for seamless scrolling.
-    document.addEventListener('DOMContentLoaded', () => {
-      const credits = document.getElementById('credits');
-      // Clone the .credits element (with its children)
-      const clone = credits.cloneNode(true);
-      // Append the clone as a sibling inside the .scroll container
-      credits.parentElement.appendChild(clone);
-    });
-  </script>
 </body>
 </html>
