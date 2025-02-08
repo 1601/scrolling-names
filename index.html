@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Auto Scrolling Names</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #333;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .scroll-container {
+            height: 80vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scroll-content {
+            position: absolute;
+            width: 100%;
+            animation: scrolling 60s linear infinite;
+        }
+
+        .scroll-content div {
+            margin-bottom: 1.6rem;
+        }
+
+        @keyframes scrolling {
+            0% { top: 100%; }
+            100% { top: -100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="scroll-container">
+            <div class="scroll-content" id="scrollContent"></div>
+        </div>
+    </div>
+
+    <script>
+        const names = [
+            "Mr. Larry & Mrs. Gemma Santos",
+            "Mrs Fely Garcia & Family",
+            "Mr. Knoll & Mrs. Emma Evangelista",
+            "Mr. Marcelo & Mrs. Aileen Castillo",
+            "Mr. Darlo & Dra. Glo Ilagan",
+            "Engr. Val & Mrs. Eva Plata",
+            "Bro. Romeo & Mrs. Josie Aguirre",
+            "Mr. Harold & Mrs. Gina Nueva",
+            "Dr. Nicomedes Dimalibot",
+            "Mr. Gil & Mrs. Perla Castillo",
+            "Mr. Christopher & Mrs. Mitchi Castillo",
+            "Engr. Patrick Andree Castillo",
+            "Ms. Jelian Casapao",
+            "Steak ni Juan",
+            "Mr. Ajun & Mrs. Blandine Rosales",
+            "Mr. Nemesio & Mrs. Evelyn Reyes",
+            "Mr. Wilson & Mrs. Jean Garcia",
+            "Mrs. Belen Macaraig",
+            "Dr. Maria Leida Garcia",
+            "Mr. Ramil & Mrs. Maricel Ilagan",
+            "Dr. Jonathan Mangubat"
+        ];
+
+        function createNameElements() {
+            const scrollContent = document.getElementById('scrollContent');
+            names.forEach(name => {
+                const div = document.createElement('div');
+                div.textContent = name;
+                scrollContent.appendChild(div);
+            });
+        }
+
+        function duplicateContent() {
+            const scrollContent = document.getElementById('scrollContent');
+            const clone = scrollContent.cloneNode(true);
+            scrollContent.appendChild(clone.childNodes);
+        }
+
+        createNameElements();
+        duplicateContent(); // Duplicate content for seamless looping
+
+        // Adjust animation duration based on content height
+        window.addEventListener('load', () => {
+            const scrollContent = document.getElementById('scrollContent');
+            const contentHeight = scrollContent.offsetHeight / 2; // Divide by 2 because we duplicated the content
+            const viewportHeight = window.innerHeight;
+            const scrollDuration = (contentHeight / viewportHeight) * 30; // 30 seconds per viewport height
+            scrollContent.style.animation = `scrolling ${scrollDuration}s linear infinite`;
+        });
+    </script>
+</body>
+</html>
