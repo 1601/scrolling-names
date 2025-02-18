@@ -45,11 +45,32 @@
       height: auto;
       margin-bottom: 1rem;
     }
+
+    /* Sponsor text (Positioned in 4th quadrant) */
+    .sponsor {
+      position: absolute;
+      bottom: 10%;  /* Position 10% from bottom */
+      right: 10%;   /* Position 10% from right */
+      font-size: 4.8rem;
+      font-weight: 700;
+      color: red;
+      text-transform: uppercase;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.3); /* Optional: semi-transparent bg */
+      padding: 10px 20px;
+      border-radius: 8px;
+      /* add outline on text with white*/
+      text-shadow: 5px 5px 5px white;
+      
+    }
   </style>
 </head>
 <body>
   <!-- GSAP from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- create a div with text sponsor to be on make it the center of the 4th quadrant of the screen -->
+
 
   <div class="container" id="slidesContainer">
     <div class="slide">Mr. Larry &amp; Mrs. Gemma Santos</div>
@@ -78,6 +99,8 @@
     <div class="slide">Mr. Ramil &amp; Mrs. Maricel Ilagan</div>
     <div class="slide">Dr. Jonathan Mangubat</div>
   </div>
+  <!-- Sponsor Text -->
+  <div class="sponsor">Sponsored by:</div>
 
   <script>
     // Grab all slides
