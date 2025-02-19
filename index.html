@@ -100,7 +100,7 @@
     <div class="slide">Dr. Jonathan Mangubat</div>
   </div>
   <!-- Sponsor Text -->
-  <div class="sponsor">Sponsored by:</div>
+  <div class="sponsor">SPONSOR</div>
 
   <script>
     // Grab all slides
@@ -127,22 +127,22 @@
       masterTl.fromTo(
         slide,
         { y: -300, opacity: 0 },  // from
-        { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" }, // to
-        i * 2 // start time in the master timeline
+        { y: 0, opacity: 1, duration: 2.5, ease: "power2.out" }, // to
+        i * 8 // start time in the master timeline
       );
 
       // 2) "Hold" for 1 second (just a pause, no property changes)
       masterTl.to(
         slide,
-        { duration: 1 }, 
-        i * 2 + 1 // starts right after it finishes dropping in
+        { duration: 3.5 }, 
+        i * 8 + 3.5 // starts right after it finishes dropping in
       );
 
       // 3) Drop out
       masterTl.to(
         slide,
         { y: 200, opacity: 0, duration: 1, ease: "power2.in" },
-        i * 2 + 2 // starts 1 second after the hold
+        i * 8 + 8 // starts 1 second after the hold
       );
     });
 
