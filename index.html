@@ -44,7 +44,7 @@
       align-items: center;
       justify-content: center;
       opacity: 0;
-      font-size: clamp(2rem, 10vw, 8rem); /* Responsive size */
+      font-size: 8em;
       font-weight: bold;
       max-width: 90vw;
       line-height: 1.2;
@@ -82,23 +82,23 @@
     const slidesData = [
       "Mr. Larry & Mrs. Gemma Santos",
       "Mrs. Fely Garcia & Family",
-      "Mr. Knoll & Mrs. Emma Evangelista",
-      "Mr. Marcelo & Mrs. Aileen Castillo",
-      "Mr. Darlo & Dra. Glo Ilagan",
-      "Engr. Val & Mrs. Eva Plata",
-      "Bro. Romeo & Mrs. Josie Aguirre",
-      "Mr. Harold & Mrs. Gina Nueva",
-      "Dr. Nicomedes Dimalibot",
-      "Mr. Gil & Mrs. Perla Castillo",
-      "Mr. Christopher & Mrs. Mitchi Castillo",
-      "Engr. Patrick Andree Castillo",
-      "Ms. Jelian Casapao",
-      "Mr. Ajun & Mrs. Blandine Rosales",
-      "Mr. Nemesio & Mrs. Evelyn Reyes",
-      "Mrs. Belen Macaraig",
-      "Dr. Maria Leida Garcia",
-      "Mr. Ramil & Mrs. Maricel Ilagan",
-      "Dr. Jonathan Mangubat",
+      // "Mr. Knoll & Mrs. Emma Evangelista",
+      // "Mr. Marcelo & Mrs. Aileen Castillo",
+      // "Mr. Darlo & Dra. Glo Ilagan",
+      // "Engr. Val & Mrs. Eva Plata",
+      // "Bro. Romeo & Mrs. Josie Aguirre",
+      // "Mr. Harold & Mrs. Gina Nueva",
+      // "Dr. Nicomedes Dimalibot",
+      // "Mr. Gil & Mrs. Perla Castillo",
+      // "Mr. Christopher & Mrs. Mitchi Castillo",
+      // "Engr. Patrick Andree Castillo",
+      // "Ms. Jelian Casapao",
+      // "Mr. Ajun & Mrs. Blandine Rosales",
+      // "Mr. Nemesio & Mrs. Evelyn Reyes",
+      // "Mrs. Belen Macaraig",
+      // "Dr. Maria Leida Garcia",
+      // "Mr. Ramil & Mrs. Maricel Ilagan",
+      // "Dr. Jonathan Mangubat",
 
       // Special Thanks Names (with line breaks)
       "Rev. Fr. Carlo Magno C. Ilagan<br>Parish Priest & STC President",
@@ -143,7 +143,7 @@
 
     slides.forEach((slide, i) => {
       // Detect if the current slide is in the "Special Thanks" category
-      const isSpecialThanks = slidesData.indexOf(slide.innerHTML) >= 19;
+      const isSpecialThanks = slidesData.indexOf(slide.innerHTML) >= 3;
 
       // Animate the slide
       masterTl.fromTo(
