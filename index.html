@@ -101,29 +101,29 @@
       // "Dr. Jonathan Mangubat",
 
       // Special Thanks Names (with line breaks)
-      "Rev. Fr. Carlo Magno C. Ilagan<br>Parish Priest & STC President",
-      "Rev. Fr. Dakila Ramos<br>Parochial Vicar, ICP<br>Priest-in-charge, BCAPP",
-      "Rev. Fr. Enzo Zara<br>Parochial Vicar, ICP",
-      "Sta. Teresa College",
-      "Sis. Beth Cabral<br>Coordinator, BCAPP",
-
-      "Teodora Castillo<br>Our Lady of the Miraculous Medal, Inicbulan Ilaya",
-      "Nedie Matundan<br>Our Lady of Peace & Good Voyage, Inicbulan Ibaba",
-      "Remy De Guzman<br>San Isidro Labrador, Alagao",
-      "Beth Cabral / Lourdes Manalo<br>Immaculate Conception, Sinala",
-      "Onie Capili<br>Our Lady of Fatima, Malindig",
-      "Ronelie Austria<br>Immaculate Conception, Manghinao Uno Ibaba",
-      "Josefina Alamag<br>Our Lady of Lourdes - Manghinao Uno Ilaya",
-      "Evelyn Acuzar<br>Holy Family, Balayong",
-      "Judy Abe<br>Our Lady Of Lourdes, As-is",
-      "Mariafe Macuha<br>Immaculate Conception, Cupang Ibaba",
-      "Glenda Banta<br>Mahal na Birhen La Purisima Conception, Cupang Gitna",
-      "Fe Macalincag<br>Our Lady of Lourdes, Cupang Ilaya",
-      "Lucy Abel<br>San Antonio de Padua, San Teodoro",
-      "Corazon Picarra<br>Our Lady of Lourdes, Rizal",
-      "Krysty Casapao<br>Our Lady of Fatima, Durungao Pandayan",
-      "Ayang Ilagan<br>Our Lady of Fatima, Durungao Guintuan",
-      "Cy Escalante<br>Our Lady of Lourdes Chapel, San Teodoro Sitio Pook, Ibaba at Labas"
+      "Rev. Fr. Carlo Magno C. Ilagan",
+      "Rev. Fr. Dakila Ramos",
+      "Rev. Fr. Enzo Zara",
+      "Rev. Fr. Beth Cabral",
+      "Sis. Beth Cabral",
+      "Sis. Teodora Castillo",
+      "Sis. Nedie Matundan",
+      "Sis. Remy De Guzman",
+      "Sis. Beth Cabral",
+      "Sis. Lourdes Manalo",
+      "Sis. Onie Capili",
+      "Sis. Ronelie Austria",
+      "Sis. Josefina Alamag",
+      "Sis. Evelyn Acuzar",
+      "Sis. Judy Abe",
+      "Sis. Mariafe Macuha",
+      "Sis. Glenda Banta",
+      "Sis. Fe Macalincag",
+      "Sis. Lucy Abel",
+      "Sis. Corazon Picarra",
+      "Sis. Krysty Casapao",
+      "Sis. Ayang Ilagan",
+      "Sis. Cy Escalante",
     ];
 
     // Add slides dynamically
@@ -143,7 +143,7 @@
 
     slides.forEach((slide, i) => {
       // Detect if the current slide is in the "Special Thanks" category
-      const isSpecialThanks = slidesData.indexOf(slide.innerHTML) >= 3;
+      const isSpecialThanks = slidesData.indexOf(slide.innerHTML) >= 2;
 
       // Animate the slide
       masterTl.fromTo(
