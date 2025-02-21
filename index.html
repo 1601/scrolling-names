@@ -3,64 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <title>Sponsors</title>
+
+  <!-- Google Fonts: Merriweather -->
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  
   <style>
     /* Basic reset */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     /* Full-screen background image */
     body {
       background: url("bg2.jpg") no-repeat center center fixed;
       background-size: cover;
-      font-family: sans-serif;
+      font-family: "Merriweather", serif;
       overflow: hidden;
       color: #fff;
     }
+
     .container {
       position: relative;
       width: 100%;
       height: 100vh;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    /* Each slide is stacked at the center, initially invisible. */
+
+    /* Slide Styling - Content-Aware Font Size */
     .slide {
       color: red;
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      font-family: "Merriweather", serif; /* Applying Merriweather */
+      font-family: "Merriweather", serif;
       text-align: center;
       display: flex;
-      flex-direction: column; /* So logo + text can stack vertically */
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      opacity: 0; /* Hidden until GSAP animates it in */
-      font-size: 9em;
+      opacity: 0;
+      font-size: clamp(2rem, 10vw, 8rem); /* Responsive size */
       font-weight: bold;
-    }
-    .slide img {
-      max-width: 300px;
-      height: auto;
-      margin-bottom: 1rem;
+      max-width: 90vw;
+      line-height: 1.2;
     }
 
-    /* Sponsor text (Positioned in 4th quadrant) */
+    /* Sponsor Text (Positioned in 4th quadrant) */
     .sponsor {
       position: absolute;
-      bottom: 10%;  /* Position 10% from bottom */
-      right: 10%;   /* Position 10% from right */
+      bottom: 10%;
+      right: 10%;
       font-size: 4.8rem;
       font-weight: 700;
       color: red;
       text-transform: uppercase;
       z-index: 10;
-      background: rgba(0, 0, 0, 0.3); /* Optional: semi-transparent bg */
+      background: rgba(0, 0, 0, 0.3);
       padding: 10px 20px;
       border-radius: 8px;
-      /* add outline on text with white*/
       text-shadow: 5px 5px 5px white;
-      
+      transition: all 0.5s ease-in-out;
     }
   </style>
 </head>
@@ -68,85 +72,101 @@
   <!-- GSAP from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-  <!-- create a div with text sponsor to be on make it the center of the 4th quadrant of the screen -->
+  <div class="container" id="slidesContainer"></div>
 
-
-  <div class="container" id="slidesContainer">
-    <div class="slide">Mr. Larry &amp; Mrs. Gemma Santos</div>
-    <div class="slide">Mrs Fely Garcia &amp; Family</div>
-    <div class="slide">Mr. Knoll &amp; Mrs. Emma Evangelista</div>
-    <div class="slide">Mr. Marcelo &amp; Mrs. Aileen Castillo</div>
-    <div class="slide">Mr. Darlo &amp; Dra. Glo Ilagan</div>
-    <div class="slide">Engr. Val &amp; Mrs. Eva Plata</div>
-    <div class="slide">Bro. Romeo &amp; Mrs. Josie Aguirre</div>
-    <div class="slide">Mr. Harold &amp; Mrs. Gina Nueva</div>
-    <div class="slide">Dr. Nicomedes Dimalibot</div>
-    <div class="slide">Mr. Gil &amp; Mrs. Perla Castillo</div>
-    <div class="slide">Mr. Christopher &amp; Mrs. Mitchi Castillo</div>
-    <div class="slide">Engr. Patrick Andree Castillo</div>
-    <div class="slide">Ms. Jelian Casapao</div>
-    <!-- Example with a logo -->
-    <!-- <div class="slide">
-      <img src="steak_ni_juan.jpg" alt="Steak ni Juan Logo" />
-      <div>Steak ni Juan</div>
-    </div> -->
-    <div class="slide">Mr. Ajun &amp; Mrs. Blandine Rosales</div>
-    <div class="slide">Mr. Nemesio &amp; Mrs. Evelyn Reyes</div>
-  
-    <div class="slide">Mrs. Belen Macaraig</div>
-    <div class="slide">Dr. Maria Leida Garcia</div>
-    <div class="slide">Mr. Ramil &amp; Mrs. Maricel Ilagan</div>
-    <div class="slide">Dr. Jonathan Mangubat</div>
-  </div>
-  <!-- Sponsor Text -->
-  <div class="sponsor">SPONSOR</div>
+  <!-- Sponsor Label -->
+  <div class="sponsor" id="sponsorLabel">SPONSOR</div>
 
   <script>
-    // Grab all slides
-    const slides = document.querySelectorAll('.slide');
+    // List of names with proper line breaks
+    const slidesData = [
+      "Mr. Larry & Mrs. Gemma Santos",
+      "Mrs. Fely Garcia & Family",
+      "Mr. Knoll & Mrs. Emma Evangelista",
+      "Mr. Marcelo & Mrs. Aileen Castillo",
+      "Mr. Darlo & Dra. Glo Ilagan",
+      "Engr. Val & Mrs. Eva Plata",
+      "Bro. Romeo & Mrs. Josie Aguirre",
+      "Mr. Harold & Mrs. Gina Nueva",
+      "Dr. Nicomedes Dimalibot",
+      "Mr. Gil & Mrs. Perla Castillo",
+      "Mr. Christopher & Mrs. Mitchi Castillo",
+      "Engr. Patrick Andree Castillo",
+      "Ms. Jelian Casapao",
+      "Mr. Ajun & Mrs. Blandine Rosales",
+      "Mr. Nemesio & Mrs. Evelyn Reyes",
+      "Mrs. Belen Macaraig",
+      "Dr. Maria Leida Garcia",
+      "Mr. Ramil & Mrs. Maricel Ilagan",
+      "Dr. Jonathan Mangubat",
+
+      // Special Thanks Names (with line breaks)
+      "Rev. Fr. Carlo Magno C. Ilagan<br>Parish Priest & STC President",
+      "Rev. Fr. Dakila Ramos<br>Parochial Vicar, ICP<br>Priest-in-charge, BCAPP",
+      "Rev. Fr. Enzo Zara<br>Parochial Vicar, ICP",
+      "Sta. Teresa College",
+      "Sis. Beth Cabral<br>Coordinator, BCAPP",
+
+      "Teodora Castillo<br>Our Lady of the Miraculous Medal, Inicbulan Ilaya",
+      "Nedie Matundan<br>Our Lady of Peace & Good Voyage, Inicbulan Ibaba",
+      "Remy De Guzman<br>San Isidro Labrador, Alagao",
+      "Beth Cabral / Lourdes Manalo<br>Immaculate Conception, Sinala",
+      "Onie Capili<br>Our Lady of Fatima, Malindig",
+      "Ronelie Austria<br>Immaculate Conception, Manghinao Uno Ibaba",
+      "Josefina Alamag<br>Our Lady of Lourdes - Manghinao Uno Ilaya",
+      "Evelyn Acuzar<br>Holy Family, Balayong",
+      "Judy Abe<br>Our Lady Of Lourdes, As-is",
+      "Mariafe Macuha<br>Immaculate Conception, Cupang Ibaba",
+      "Glenda Banta<br>Mahal na Birhen La Purisima Conception, Cupang Gitna",
+      "Fe Macalincag<br>Our Lady of Lourdes, Cupang Ilaya",
+      "Lucy Abel<br>San Antonio de Padua, San Teodoro",
+      "Corazon Picarra<br>Our Lady of Lourdes, Rizal",
+      "Krysty Casapao<br>Our Lady of Fatima, Durungao Pandayan",
+      "Ayang Ilagan<br>Our Lady of Fatima, Durungao Guintuan",
+      "Cy Escalante<br>Our Lady of Lourdes Chapel, San Teodoro Sitio Pook, Ibaba at Labas"
+    ];
+
+    // Add slides dynamically
+    const container = document.getElementById("slidesContainer");
+    slidesData.forEach((name) => {
+      const slide = document.createElement("div");
+      slide.classList.add("slide");
+      slide.innerHTML = name;
+      container.appendChild(slide);
+    });
+
+    const slides = document.querySelectorAll(".slide");
+    const sponsorLabel = document.getElementById("sponsorLabel");
 
     // Create a GSAP master timeline that repeats infinitely
     const masterTl = gsap.timeline({ repeat: -1 });
 
-    /*
-      We give each slide a 3-second block:
-        - 0 to 1s: drop in from above (fade in)
-        - 1 to 2s: remain on screen
-        - 2 to 3s: drop out below (fade out)
-
-      We start each slide's block 2s after the previous one,
-      which creates a 1-second overlap:
-        - Slide i "in" starts at time = i*2
-        - So while Slide i is going out (time = i*2 + 2 -> i*2 + 3),
-          Slide (i+1) is already starting to come in (time = (i+1)*2).
-    */
-
     slides.forEach((slide, i) => {
-      // 1) From/To for dropping in
+      // Detect if the current slide is in the "Special Thanks" category
+      const isSpecialThanks = slidesData.indexOf(slide.innerHTML) >= 19;
+
+      // Animate the slide
       masterTl.fromTo(
         slide,
-        { y: -300, opacity: 0 },  // from
-        { y: 0, opacity: 1, duration: 2.5, ease: "power2.out" }, // to
-        i * 8 // start time in the master timeline
+        { y: -300, opacity: 0 },
+        { y: 0, opacity: 1, duration: 2.5, ease: "power2.out" },
+        i * 8
       );
 
-      // 2) "Hold" for 1 second (just a pause, no property changes)
-      masterTl.to(
-        slide,
-        { duration: 3.5 }, 
-        i * 8 + 3.5 // starts right after it finishes dropping in
-      );
+      masterTl.to(slide, { duration: 3.5 }, i * 8 + 3.5);
 
-      // 3) Drop out
       masterTl.to(
         slide,
         { y: 200, opacity: 0, duration: 1, ease: "power2.in" },
-        i * 8 + 8 // starts 1 second after the hold
+        i * 8 + 8
       );
+
+      // Change "SPONSOR" to "SPECIAL THANKS" when necessary
+      masterTl.call(() => {
+        sponsorLabel.innerText = isSpecialThanks ? "SPECIAL THANKS" : "SPONSOR";
+      }, null, i * 8);
     });
 
-    // The timeline will run from 0s up to ~ (slides.length * 2) + 1
-    // then repeat infinitely with no gap.
   </script>
 </body>
 </html>
