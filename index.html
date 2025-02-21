@@ -80,11 +80,10 @@
   <script>
     // List of names with proper line breaks
     const slidesData = [
-      "Mr. Larry & Mrs. Gemma Santos",
+    "Mr. Larry & Mrs. Gemma Santos",
     "Mrs. Fely Garcia & Family",
     "Mr. Knoll & Mrs. Emma Evangelista",
     "Mr. Marcelo & Mrs. Aileen Castillo",
-    "Mr. Darlo & Dra. Glo Ilagan",
     "Engr. Val & Mrs. Eva Plata",
     "Bro. Romeo & Mrs. Josie Aguirre",
     "Mr. Harold & Mrs. Gina Nueva",
@@ -109,24 +108,27 @@
     "Dr. Arlene Macaraig- Endaya",
     "Dr. Menalyn Abe",
     "Dr. Angeo de Guia",
-    "Engr. Bon & Dr. Gia Ilagan-Garcia",
-    "Dr. Darlene Angela C. Ilagan",
-    "Mr. Darlo Miguel & Mrs. Camille Ilagan",
-    "Darlo Emmanuel C. Ilagan",
     "Glenda D. Castillo",
     "Lea Ledesma",
     "Loquette Abrahan",
     "Kat Javier",
+    "Michelle Magboo",
+    "Virgie Medrano",
     "Arlene Abante",
     "Ma. Angelica Reyes",
     "Sharen Bacsa",
     "Gloria de la Cruz",
     "Nedie Dipasupil",
     "Jona Dalangin",
+    "Evelyn Reyes",
+    "Mila Castor",
     "Glenda Beltran",
     "Mary Joy Panopio",
     "Meriam Amponin",
-    "Mhai Mhai",
+    "Thess Rosales ",
+    "Cristy Fenol",
+    "Jhing",
+    "Sally Andaya",
     "Babycel Masongsong",
     "Sherry Ann Abu",
     "Gloria Medrano",
@@ -158,16 +160,23 @@
     "Jo Agulo",
     "Kaye Abrahan",
     "Ivy Sandoval",
+    "Reina Mendoza",
+    "Cita M. Atienza",
+    "PRIME FUEL.",
+    "Engr. Bon & Dr. Gia Ilagan-Garcia",
+    "Dr. Darlene Angela C. Ilagan",
+    "Mr. Darlo Miguel & Mrs. Camille Anos-Ilagan",
+    "Darlo Emmanuel C. Ilagan",
+    "Mr. Darlo & Dra. Glo Castillo-Ilagan",
 
       // Special Thanks Names (with line breaks)
       "Rev. Fr. Carlo Magno C. Ilagan",
       "Rev. Fr. Dakila Ramos",
-      "Rev. Fr. Beth Cabral",
       "Sis. Beth Cabral",
-      "Sis. Teodora Castillo",
+      "Bro. Randy and Sis. Irene Panopio",
+      "Sis. Rorie Castillo",
       "Sis. Nedie Matundan",
       "Sis. Remy De Guzman",
-      "Sis. Beth Cabral",
       "Sis. Lourdes Manalo",
       "Sis. Onie Capili",
       "Sis. Ronelie Austria",
@@ -200,30 +209,30 @@
     const masterTl = gsap.timeline({ repeat: -1 });
 
     slides.forEach((slide, i) => {
-      // Detect if the current slide is in the "Special Thanks" category
-      const isSpecialThanks = slidesData.indexOf(slide.innerHTML) >= 78;
+  // Detect if the current slide is in the "Special Thanks" category
+  const isSpecialThanks = slidesData.indexOf(slide.innerHTML) >= 87;
 
-      // Animate the slide
-      masterTl.fromTo(
-        slide,
-        { y: -300, opacity: 0 },
-        { y: 0, opacity: 1, duration: 2.5, ease: "power2.out" },
-        i * 8
-      );
+  // Animate the slide - **Adjusted for longer visibility**
+  masterTl.fromTo(
+    slide,
+    { y: -300, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+    i * 3.5 // Adjust total slide time (each starts every 3.5s)
+  );
 
-      masterTl.to(slide, { duration: 3.5 }, i * 8 + 3.5);
+  masterTl.to(slide, { duration: 2.5 }, i * 3.5 + 0.5); // Stay visible for 2.5s
 
-      masterTl.to(
-        slide,
-        { y: 200, opacity: 0, duration: 1, ease: "power2.in" },
-        i * 8 + 8
-      );
+  masterTl.to(
+    slide,
+    { y: 200, opacity: 0, duration: 0.5, ease: "power2.in" },
+    i * 3.5 + 3 // Start fade out at 3s mark
+  );
 
-      // Change "SPONSOR" to "SPECIAL THANKS" when necessary
-      masterTl.call(() => {
-        sponsorLabel.innerText = isSpecialThanks ? "SPECIAL THANKS" : "SPONSOR";
-      }, null, i * 8);
-    });
+  // Change "SPONSOR" to "SPECIAL THANKS" when necessary
+  masterTl.call(() => {
+    sponsorLabel.innerText = isSpecialThanks ? "SPECIAL THANKS" : "SPONSOR";
+  }, null, i * 3.5);
+});
 
   </script>
 </body>
